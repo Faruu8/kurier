@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Kuriera</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 28px;
+        }
+        h2 {
+            font-size: 24px;
+        }
+        .logout-link {
+            color: #333;
+            text-decoration: none;
+            background-color: #eee;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Panel Kuriera</h1>
+    </header>
+    <div class="container">
+        <h2>Wszystkie Paczki</h2>
+        <a href="{% url 'logout' %}" class="logout-link">Wyloguj</a>
+        <ul>
+            {% for package in packages %}
+                <li>
+                    Paczka #{{ package.id }}<br>
+                    Waga: {{ package.weight }} kg<br>
+                    Opis: {{ package.description }}<br>
+                    Odbiorca: {{ package.recipient.name }}<br>
+                    Adres odbiorcy: {{ package.recipient.address }}<br>
+                    Miasto: {{ package.recipient.city }}<br>
+                    Kod pocztowy: {{ package.recipient.postal_code }}<br>
+                    Klient: {{ package.customer.user.username }}<br>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

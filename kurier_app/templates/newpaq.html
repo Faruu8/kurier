@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tworzenie Paczki</title>
+    <style>
+        /* Styl formularza */
+        .home-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            color: #09f1cd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .home-link:hover {
+            color: #e74c3c;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logout-link {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 16px;
+            color: #f60505;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .logout-link:hover {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="{% url 'home' %}" class="home-link">STRONA GŁÓWNA</a>
+        <a href="{% url 'logout' %}" class="logout-link">Wyloguj</a>
+        <h1>Tworzenie Paczki</h1>
+        <form method="post">
+        {% csrf_token %}
+        {{ recipient_form.as_p }}
+        {{ package_form.as_p }}
+        <button type="submit">Stwórz Paczkę</button>
+        </form>
+    </div>
+</body>
+</html>

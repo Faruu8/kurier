@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moje Paczki - Aplikacja Kurierska</title>
+    <style>
+        /* Styl pozostałych elementów... */
+        .home-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            color: #09f1cd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .home-link:hover {
+            color: #e74c3c;
+        }
+        .content {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .package-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .package-item {
+            background-color: #529a3f;
+            border: 1px solid #ec0d0d;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        .logout-link {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 16px;
+            color: #f60505;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .logout-link:hover {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+</head>
+<body>
+    <a href="{% url 'home' %}" class="home-link">STRONA GŁÓWNA</a>
+    <a href="{% url 'logout' %}" class="logout-link">Wyloguj</a>
+    <div class="parallax"></div>
+    <div class="container">
+        <div class="content">
+            <h1>Twoje Paczki</h1>
+            <ul class="package-list">
+                {% for package in user_packages %}
+                    <li class="package-item">
+                        <strong>Paczka #{{ package.id }}</strong><br>
+                        Waga: {{ package.weight }} kg<br>
+                        Opis: {{ package.description }}<br>
+                        Odbiorca: {{ package.recipient.name }}<br>
+                        Adres odbiorcy: {{ package.recipient.address }}<br>
+                        Miasto: {{ package.recipient.city }}<br>
+                        Kod pocztowy: {{ package.recipient.postal_code }}
+                        <form method="post" action="{% url 'usun_paczke' package.id %}">
+                            {% csrf_token %}
+                            <button type="submit">Usuń</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

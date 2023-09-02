@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona Główna - Aplikacja Kurierska</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #a10dec, #2980b9);
+            color: #fff;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .content {
+            text-align: center;
+        }
+        .welcome {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .description {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .action-button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+            cursor: pointer;
+        }
+        .create-package-button {
+            background-color: #e74c3c;
+        }
+        .create-package-button:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+        .pack-list-button {
+            background-color: #2ecc71;
+        }
+        .pack-list-button:hover {
+            background-color: #27ae60;
+            transform: scale(1.05);
+        }
+        .logout-link {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 16px;
+            color: #fcfcfc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .logout-link:hover {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'logout' %}" class="logout-link">Wyloguj</a>
+    <div class="container">
+        <div class="content">
+            <h1 class="welcome">Witaj, {{ request.user }}!</h1>
+            <p class="description">Wybierz teraz, co chcesz zrobić:</p>
+            <div class="action-buttons">
+                <a href="{% url 'Tworzenie_paczki' %}" class="action-button create-package-button">Stwórz Paczkę</a>
+                <a href="{% url 'Pack_list' %}" class="action-button pack-list-button">Lista Paczek</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
