@@ -56,7 +56,8 @@ python manage.py runserver
 - Użytkownik może zarejestrować się jako kurier, podając swoje dane i numer telefonu.
 - Kurierzy mogą logować się, wybierając odpowiednią opcję podczas logowania.
 - Po zalogowaniu kurier może przeglądać dostępne paczki, przypisywać je do siebie i dostarczać je do odbiorców.
-- Kurier moze zmieniac statusy paczek jak i je usuwac z siebie
+- Kurier moze zmieniac statusy paczek.
+- Moze również przypisane paczki usuwac.
 
 ## Autorzy
 
