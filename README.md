@@ -18,7 +18,7 @@ https://github.com/Faruu8/kurier
 
 2. Przejdź do katalogu projektu:
 
-cd aplikacja-kurier
+cd ścieżka/do/aplikacji
 
 
 3. Przeprowadź migracje bazy danych:
@@ -49,7 +49,7 @@ python manage.py runserver
 ### Zarządzanie paczkami
 
 - Zalogowany użytkownik może zarządzać swoimi paczkami, przeglądając listę paczek dostępnych na stronie zarządzania paczkami.
-- Użytkownik może usuwać je.
+- Użytkownik może je usuwać.
 
 ### Obsługa kurierów
 
